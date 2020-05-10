@@ -33,7 +33,7 @@ export default class App extends React.Component {
   };
 
   onDragEnd = () => {
-    this.draggedIdx = null;
+    this.draggedItem = null;
   };
 
   render() {
