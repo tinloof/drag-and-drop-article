@@ -15,7 +15,8 @@ export default class App extends React.Component {
     e.dataTransfer.setDragImage(e.target.parentNode, 20, 20);
   };
 
-  onDragOver = index => {
+  onDragOver = (e, index) => {
+    e.preventDefault();
     const draggedOverItem = this.state.items[index];
 
     // if the item is dragged over itself, ignore
@@ -41,9 +42,9 @@ export default class App extends React.Component {
       <div className="App">
         <main>
           <h3>List of items</h3>
-          <ul>
+          <ul onDragOver={(e) => e.preventDefault}>
             {this.state.items.map((item, idx) => (
-              <li key={item} onDragOver={() => this.onDragOver(idx)}>
+              <li key={item} onDragOver={(e) => this.onDragOver(e, idx)}>
                 <div
                   className="drag"
                   draggable
